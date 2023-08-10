@@ -1,0 +1,163 @@
+<app-navbar></app-navbar>
+<app-classhome [classId]="classId"></app-classhome>
+<!-- <div class="container justify-end mx-auto">
+    <a class="text-xl pl-2 font-bold"></a>
+    <form class="flex px-2">
+      <input  name="name" class="form-input py-2 w-full mr-2" type="search" placeholder="Search" aria-label="Search" >
+      <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded" type="submit">Search</button>
+    </form>
+  </div> -->
+<!-- <app-modal [clsId]="classId" *ngIf="isModalOpen" (close)="closeModal()"></app-modal>
+
+<div class=" flex justify-start gap-4 p-8 border-gray-300 border-4 flex-wrap w-screen">
+  <div
+    class="w-full md:w-1/6 flex flex-col md:flex-row rounded-xl shadow-xl  p-2 mx-auto border border-gray-200 bg-white">
+    <div class="w-full w-32 p-3  bg-white grid place-items-center">
+      <a>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUhH8LklQ32EbmuZ6OXgnsXG2xRRySrLnM8g&usqp=CAU"
+          alt="tailwind logo" class=" w-32 h-32 rounded-xl" />
+
+        <div class=" md:felx-1 bg-white flex flex-col ">
+          <h3 class="font-black text-center text-gray-800 md:text-lg uppercase  text-xl">Assignment</h3>
+          <button (click)="openModal()" class="py-2 text-sm text-white font-semibold bg-blue-500 rounded" tabindex="0"
+            type="button">Upload</button>
+        </div>
+      </a>
+    </div>
+  </div> -->
+<!-- <img  src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/640px-PDF_file_icon.svg.png" alt="tailwind logo" class="w-32 h-32 rounded-xl" />  -->
+<!-- <div *ngFor="let a of assignment"
+    class="w-full md:w-1/6 flex flex-col md:flex-row rounded-xl shadow-xl  p-2 mx-auto border border-gray-200 bg-white">
+
+    <div class="w-full w-32 p-3 bg-white grid place-items-center">
+      
+      <pdf-viewer
+      [src]="a.path"
+      [render-text]="true"
+      [original-size]="false"
+      class="w-32 h-32 rounded-xl" 
+    ></pdf-viewer>
+      <div class="w-auto md:felx-1 bg-white flex flex-col ">
+
+        <h3 class="font-black text-gray-800 md:text-2xl uppercase py-2 text-xl"></h3>
+      </div>
+    </div>
+  </div>
+
+</div> -->
+<!-- modal -->
+<app-modal (fetch)="fetch($event)" [clsId]="classId" *ngIf="isModalOpen" ></app-modal>
+<!-- component -->
+<div class="antialiased font-sans h-screen bg-gray-200">
+  <div class="flex justify-between">
+    <div class="pt-2 pr-2 pb-2 pl-4">
+      <h2 class="text-2xl  font-semibold leading-tight">Assignments</h2>
+    </div>
+    <div class="w-auto">
+      <!-- <div class=""><h1 class="text-xl my-3 text-gray-800 font-semibold">Search your class here.... </h1></div> -->
+      <div class="my-2 px-5">
+
+        <form class="flex justify-end">
+          <input name="subject" class="form-input  mr-2 rounded-xl" type="search" placeholder="Search"
+            aria-label="Search">
+          <button class="bg-gray-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg"
+            type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+    <div class="pt-2 pr-4 pb-2 pl-2">
+      <svg (click)="openModal()" xmlns="http://www.w3.org/2000/svg" height="2em"
+        viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+        <style>
+          svg {
+            fill: #0f0f0f
+          }
+        </style>
+        <path
+          d="M0 64C0 28.7 28.7 0 64 0H224V128c0 17.7 14.3 32 32 32H384v38.6C310.1 219.5 256 287.4 256 368c0 59.1 29.1 111.3 73.7 143.3c-3.2 .5-6.4 .7-9.7 .7H64c-35.3 0-64-28.7-64-64V64zm384 64H256V0L384 128zm48 96a144 144 0 1 1 0 288 144 144 0 1 1 0-288zm16 80c0-8.8-7.2-16-16-16s-16 7.2-16 16v48H368c-8.8 0-16 7.2-16 16s7.2 16 16 16h48v48c0 8.8 7.2 16 16 16s16-7.2 16-16V384h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H448V304z" />
+      </svg>
+    </div>
+  </div>
+
+  <div class="container mx-auto ">
+    <div class="">
+
+      <div class="-mx-4 m-3 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+        <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+          <table class="min-w-full leading-normal">
+            <thead>
+              <tr>
+                <th
+                  class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 text-center uppercase tracking-wider">
+                  Discription
+                </th>
+                <!-- <th
+                                  class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                  Ro
+                              </th> -->
+                <th
+                  class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 text-center uppercase tracking-wider">
+                  Created at
+                </th>
+                <th
+                  class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 text-center uppercase tracking-wider">
+                  view
+                </th>
+                <th
+                  class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 text-center uppercase tracking-wider">
+                  delete
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let assignment of assignment">
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <div class="flex justify-center">
+                    <div class="ml-3">
+                      <p class="text-gray-900 text-center whitespace-no-wrap">
+                        {{assignment?.description}}
+                      </p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <p class="text-gray-900 text-center whitespace-no-wrap">
+                    {{assignment?.date | date:'short'}}
+                  </p>
+                </td>
+                <td class="px-5 py-5 border-b border-gray-200  bg-white text-sm">
+                  <div class="flex justify-center">
+                    <a href="{{assignment.path}}" target="_blank">
+
+                      <svg  xmlns="http://www.w3.org/2000/svg" height="1em"
+                        viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <style>
+                          svg {
+                            fill: #5a5e5e
+                          }
+                        </style>
+                        <path
+                          d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z" />
+                      </svg>
+                    </a>
+                  </div>
+                </td>
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <div class="flex justify-center">
+                    <button class=" bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg"
+                    (click)="delete(assignment._id)">Delete</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <app-quespage
+          [currentPage]="currentPage"
+          [totalPages]="totalItems"
+          (pageChange)="onPageChange($event)">
+         </app-quespage>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

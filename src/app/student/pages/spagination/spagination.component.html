@@ -1,0 +1,42 @@
+<!-- pagination.component.html -->
+<nav class="flex items-center justify-center" aria-label="Page navigation example">
+    <ul class="list-style-none flex">
+      <li>
+        <a
+          (click)="onPageChange(currentPage - 1)"
+          [class.pointer-events-none]="currentPage === 1"
+          class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400"
+          >Previous</a
+        >
+      </li>
+      <li *ngFor="let page of getPagesToShow()">
+        <a
+          (click)="onPageChange(page)"
+          [class.bg-primary-100]="currentPage === page"
+          [class.text-primary-700]="currentPage === page"
+          [class.text-neutral-600]="currentPage !== page"
+          [class.hover:bg-neutral-100]="currentPage !== page"
+          [class.dark:text-white]="currentPage !== page"
+          [class.dark:hover:bg-neutral-700]="currentPage !== page"
+          [class.dark:hover:text-white]="currentPage !== page"
+          class="relative block rounded bg-transparent px-3 py-1.5 text-sm font-medium transition-all duration-300"
+        >
+          {{ page }}
+          <span
+            *ngIf="currentPage === page"
+            class="absolute -m-px h-px w-px overflow-hidden whitespace-nowrap border-0 p-0 clip:rect(0,0,0,0)"
+            >(current)</span
+          >
+        </a>
+      </li>
+      <li>
+        <a
+          (click)="onPageChange(currentPage + 1)"
+          [class.pointer-events-none]="currentPage === totalPages"
+          class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-white"
+          >Next</a
+        >
+      </li>
+    </ul>
+  </nav>
+  

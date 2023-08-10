@@ -1,0 +1,396 @@
+<app-snavbar></app-snavbar>
+<!-- component -->
+<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+
+<main class="profile-page">
+  <section class="relative block h-500-px">
+    <div class="absolute top-0 w-full h-full bg-center bg-cover" style="
+            background-image: url('https://static-assets.business.amazon.com/assets/in/8th-june/411_AB_Website-Blog_Online_Teaching_2880x960.jpg.transform/2880x960/image.jpg');
+           
+          ">
+      <span id="blackOverlay" class="w-full h-full absolute opacity-50 bg-black"></span>
+    </div>
+    <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style="transform: translateZ(0px)">
+      <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+        <polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
+      </svg>
+    </div>
+  </section>
+  <section class="relative py-16 bg-blueGray-200">
+    <div class="container mx-auto px-4">
+      <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
+        <div class="px-6">
+          <div class="w-full lg:w-full px-4 lg:order-3 lg:text-right lg:self-center">
+            <div class="pt-6 flex flex-wrap justify-center  mt-32 sm:mt-0">
+              <h3 class="text-2xl  text-center font-bold font-semibold leading-normal text-black">
+                CLASS DETAILS
+              </h3>
+             
+            </div>
+          </div>
+            <div class="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center">
+            </div>
+            
+              <div class="flex justify-between">
+          <div class="text-center w-1/2">
+            
+            <!-- <h3 class="text-2xl pt-6 text-center font-bold font-semibold leading-normal text-black">
+                CLASS DETAILS
+              </h3> -->
+              <div class="flex justify-center items-center">
+                <img class="w-72 h-72 rounded-full"
+                  src="https://static.vecteezy.com/system/resources/previews/002/002/403/original/man-with-beard-avatar-character-isolated-icon-free-vector.jpg"
+                  alt="Avatar of Jonathan Reinink">
+              
+          
+              </div>
+              <div class="relative z-0 w-full mb-5 text-center text-sm">
+                <p class="text-gray-900 leading-none">{{classDet?.tutor.name}}</p>
+              </div>
+            <div class="relative z-0 w-full mb-5 text-center text-sm leading-normal mt-0 mb-2 text-blueGray-600 font-bold uppercase">
+                <H6>SUBJECT : {{classDet?.subject}}</H6>
+            </div>
+    
+            <div class="relative z-0 w-full mb-5 text-center text-sm leading-normal mt-0 mb-2 text-blueGray-600 font-bold uppercase">
+                <H6>CLASS : {{classDet?.class}}</H6>
+            </div>
+            <div class="relative z-0 w-full mb-5 text-center text-sm leading-normal mt-0 mb-2 text-blueGray-600 font-bold uppercase">
+              <H6>CHAPTER : {{classDet?.chapter}}</H6>
+          </div>
+    
+            <div class="flex flex-row space-x-4 text-center text-sm leading-normal mt-0 mb-2 text-blueGray-600 font-bold uppercase">
+                <div class="relative z-0 w-full  mb-5">
+                    <H6>AVAILABLE TIME : {{classDet?.availableTime}}</H6>
+                </div>
+            </div>
+    
+            <div class="relative z-0 w-full mb-8 text-center text-sm leading-normal mt-0 mb-2 text-blueGray-600 font-bold uppercase">
+                <H6 *ngIf="classDet?.price>0;else free">PRICE : ₹{{classDet?.price}}</H6>
+                <ng-template #free>
+                    <h6>PRICE : Free</h6>
+                </ng-template>
+            </div>
+          
+          <div class="relative z-0 w-full mb-2 text-xl font-bold mt-8 text-center">
+            <H6>Rating</H6>
+        </div>
+        <div class="star-rating flex justify-center items-center">
+          <div *ngIf="classDet?.avgRating >= 5 ; else n">
+            <input id="star-5" type="radio" name="rating" value="star-5" />
+          <label for="star-5" title="5 stars" class="selected">
+            <i class="active fa fa-star" aria-hidden="true"></i>
+          </label>
+          </div>
+          <ng-template #n>
+            <input id="star-5" type="radio" name="rating" value="star-5" />
+            <label for="star-5" title="5 stars" >
+              <i class="active fa fa-star" aria-hidden="true"></i>
+            </label>
+          </ng-template>
+
+          <div *ngIf="classDet?.avgRating >= 4 ; else r">
+            <input id="star-4" type="radio" name="rating" value="star-4" />
+            <label for="star-4" title="4 stars" class="selected">
+              <i class="active fa fa-star" aria-hidden="true"></i>
+            </label>
+          </div>
+          <ng-template #r>
+            <input id="star-4" type="radio" name="rating" value="star-4" />
+            <label for="star-4" title="4 stars">
+              <i class="active fa fa-star" aria-hidden="true"></i>
+            </label>
+          </ng-template>
+
+          <div *ngIf="classDet?.avgRating >= 3 ; else a">
+            <input id="star-3" type="radio" name="rating" value="star-3" />
+            <label for="star-3" title="3 stars" class="selected">
+              <i class="active fa fa-star" aria-hidden="true"></i>
+            </label>
+          </div>
+          <ng-template #a>
+            <input id="star-3" type="radio" name="rating" value="star-3" />
+            <label for="star-3" title="3 stars">
+              <i class="active fa fa-star" aria-hidden="true"></i>
+            </label>
+          </ng-template>
+
+          <div *ngIf="classDet?.avgRating >= 2 ; else t">
+            <input id="star-2" type="radio" name="rating" value="star-2" />
+          <label for="star-2" title="2 stars" class="selected">
+            <i class="active fa fa-star" aria-hidden="true" ></i>
+          </label>
+          </div>
+          <ng-template #t>
+            <input id="star-2" type="radio" name="rating" value="star-2" />
+          <label for="star-2" title="2 stars" >
+            <i class="active fa fa-star" aria-hidden="true"></i>
+          </label>
+          </ng-template>
+
+          <div *ngIf="classDet?.avgRating >= 1 ; else m">
+            <input  id="star-1" type="radio" name="rating" value="star-1" />
+          <label for="star-1" title="1 star" class="selected">
+            <i class="active fa fa-star" aria-hidden="true" ></i>
+          </label>
+          </div>
+          <ng-template #m>
+            <input  id="star-1" type="radio" name="rating" value="star-1" />
+            <label for="star-1" title="1 star">
+              <i class="active fa fa-star" aria-hidden="true"></i>
+            </label>
+          </ng-template>
+
+        </div>
+          <div class="flex justify-center items-center mb-8">
+          
+            <a routerLink="/student/sclassin/{{classDet?._id}}/{{classDet?.tutor._id}}">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded"
+              *ngIf="classDet?.price > 0; else joinButton">
+              PAY
+            </button>
+      
+            <ng-template #joinButton>
+              <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-6 rounded">
+                JOIN
+              </button>
+            </ng-template>
+          </a>
+          </div> 
+          </div>
+          <div *ngFor="let s of classDet.review " class="flex items-center w-1/2">
+            <article>
+                <div class="relative z-0 w-full mb-2 text-xl font-bold  text-center">
+                    <H6>Review</H6>
+                </div>
+                <div class="flex items-center mb-4 space-x-4">
+                    <img class="w-10 h-10 rounded-full" src="https://c8.alamy.com/comp/TC2FPE/young-man-avatar-cartoon-character-profile-picture-TC2FPE.jpg" alt="">
+                    <div class="space-y-1 font-medium dark:text-white">
+                        <p>{{s?.student.name}} <time datetime="2014-08-16 19:00" class="block text-sm text-gray-500 dark:text-gray-400">Review uploaded at {{s?.date | date:'short'}}</time></p>
+                    </div>
+                </div>
+                <div class="star-rating flex justify-center items-center">
+                  <div *ngIf="s?.star >= 5 ; else n">
+                    <input id="star-5" type="radio" name="rating" value="star-5" />
+                  <label for="star-5" title="5 stars" class="selected">
+                    <i class="active fa fa-star" aria-hidden="true"></i>
+                  </label>
+                  </div>
+                  <ng-template #n>
+                    <input id="star-5" type="radio" name="rating" value="star-5" />
+                    <label for="star-5" title="5 stars" >
+                      <i class="active fa fa-star" aria-hidden="true"></i>
+                    </label>
+                  </ng-template>
+        
+                  <div *ngIf="s?.star >= 4 ; else r">
+                    <input id="star-4" type="radio" name="rating" value="star-4" />
+                    <label for="star-4" title="4 stars" class="selected">
+                      <i class="active fa fa-star" aria-hidden="true"></i>
+                    </label>
+                  </div>
+                  <ng-template #r>
+                    <input id="star-4" type="radio" name="rating" value="star-4" />
+                    <label for="star-4" title="4 stars">
+                      <i class="active fa fa-star" aria-hidden="true"></i>
+                    </label>
+                  </ng-template>
+        
+                  <div *ngIf="s?.star >= 3 ; else a">
+                    <input id="star-3" type="radio" name="rating" value="star-3" />
+                    <label for="star-3" title="3 stars" class="selected">
+                      <i class="active fa fa-star" aria-hidden="true"></i>
+                    </label>
+                  </div>
+                  <ng-template #a>
+                    <input id="star-3" type="radio" name="rating" value="star-3" />
+                    <label for="star-3" title="3 stars">
+                      <i class="active fa fa-star" aria-hidden="true"></i>
+                    </label>
+                  </ng-template>
+        
+                  <div *ngIf="s?.star >= 2 ; else t">
+                    <input id="star-2" type="radio" name="rating" value="star-2" />
+                  <label for="star-2" title="2 stars" class="selected">
+                    <i class="active fa fa-star" aria-hidden="true" ></i>
+                  </label>
+                  </div>
+                  <ng-template #t>
+                    <input id="star-2" type="radio" name="rating" value="star-2" />
+                  <label for="star-2" title="2 stars" >
+                    <i class="active fa fa-star" aria-hidden="true"></i>
+                  </label>
+                  </ng-template>
+        
+                  <div *ngIf="s?.star >= 1 ; else m">
+                    <input  id="star-1" type="radio" name="rating" value="star-1" />
+                  <label for="star-1" title="1 star" class="selected">
+                    <i class="active fa fa-star" aria-hidden="true" ></i>
+                  </label>
+                  </div>
+                  <ng-template #m>
+                    <input  id="star-1" type="radio" name="rating" value="star-1" />
+                    <label for="star-1" title="1 star">
+                      <i class="active fa fa-star" aria-hidden="true"></i>
+                    </label>
+                  </ng-template>
+        
+                </div>
+                <!-- <footer class="mb-5 text-sm text-gray-500 dark:text-gray-400"><p>Reviewed in the United Kingdom on <time datetime="2017-03-03 19:00">March 3, 2017</time></p></footer> -->
+                <p class="mb-2 text-gray-500 dark:text-gray-400">{{s?.Comment}} </p>
+                <a  class="block mb-5 text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Read more</a>
+                <!-- <aside>
+                    <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">19 people found this helpful</p>
+                    <div class="flex items-center mt-3 space-x-3 divide-x divide-gray-200 dark:divide-gray-600">
+                        <a href="#" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xs px-2 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Helpful</a>
+                        <a href="#" class="pl-4 text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Report abuse</a>
+                    </div>
+                </aside> -->
+            </article>
+            </div>
+          </div>
+          <div class="flex justify-center items-center text-sm text-blueGray-500 font-semibold mb-6 py-1">
+            <img class="flex justify-center items-center h-96" src="https://cdn.vox-cdn.com/thumbor/VZeT43bAJuhC2nE90N6ACbqSyB0=/cdn.vox-cdn.com/uploads/chorus_asset/file/3397278/GIF2_1200x675_v2.0.gif" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="relative bg-blueGray-200 pt-2 pb-6 mt-2">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-center">
+      <div class="w-full md:w-6/12 px-4 mx-auto text-center">
+        <!-- <div class="flex justify-center items-center text-sm text-blueGray-500 font-semibold py-1">
+          <img class="flex justify-center W-96 items-center h-96" src="https://hrsoftbd.com/assets/servicePhoto/imageprocessingubmbn_20221107170828.gif" alt="">
+        </div> -->
+      </div>
+    </div>
+  </div>
+</footer>
+  </section>
+</main>
+<!-- <style>
+  .-z-1 {
+    z-index: -1;
+  }
+
+  .origin-0 {
+    transform-origin: 0%;
+  }
+
+  input:focus~label,
+  input:not(:placeholder-shown)~label,
+  textarea:focus~label,
+  textarea:not(:placeholder-shown)~label,
+  select:focus~label,
+  select:not([value='']):valid~label {
+    /* @apply transform; scale-75; -translate-y-6; */
+    --tw-translate-x: 0;
+    --tw-translate-y: 0;
+    --tw-rotate: 0;
+    --tw-skew-x: 0;
+    --tw-skew-y: 0;
+    transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    --tw-scale-x: 0.75;
+    --tw-scale-y: 0.75;
+    --tw-translate-y: -1.5rem;
+  }
+
+  input:focus~label,
+  select:focus~label {
+    /* @apply text-black; left-0; */
+    --tw-text-opacity: 1;
+    color: rgba(0, 0, 0, var(--tw-text-opacity));
+    left: 0px;
+  }
+</style>
+
+<div class="min-h-screen bg-gray-100 p-0 sm:p-12">
+  <div class="mx-auto max-w-md px-6 py-12 bg-white border-0 shadow-lg sm:rounded-3xl">
+    <h1 class="text-2xl flex justify-center items-center font-bold mb-8">CLASS DETAILS</h1>
+    <div class="flex justify-center items-center">
+      <img class="w-72 h-72 rounded-full"
+        src="https://static.vecteezy.com/system/resources/previews/002/002/403/original/man-with-beard-avatar-character-isolated-icon-free-vector.jpg"
+        alt="Avatar of Jonathan Reinink">
+
+    </div>
+    <div class="relative z-0 w-full mb-5 text-center text-sm">
+      <p class="text-gray-900 leading-none">{{classDet?.tutor.name}}</p>
+    </div>
+    <div class="relative z-0 w-full mb-5 text-center">
+      <H6>SUBJECT : {{classDet?.subject}}</H6>
+    </div>
+
+    <div class="relative z-0 w-full mb-5 text-center">
+      <H6>CLASS : {{classDet?.class}}</H6>
+    </div>
+
+    <div class="flex flex-row space-x-4 text-center">
+      <div class="relative z-0 w-full  mb-5">
+        <H6>AVAILABLE TIME : {{classDet?.availableTime}}</H6>
+      </div>
+    </div>
+    <div class="relative z-0 w-full mb-2 font-bold mt-8 text-center">
+      <H6>Review</H6>
+    </div>
+    <div class="star-rating flex justify-center items-center">
+      <input id="star-5" type="radio" name="rating" value="star-5" />
+      <label for="star-5" title="5 stars">
+        <i class="active fa fa-star" aria-hidden="true"></i>
+      </label>
+      <input id="star-4" type="radio" name="rating" value="star-4" />
+      <label for="star-4" title="4 stars">
+        <i class="active fa fa-star" aria-hidden="true"></i>
+      </label>
+      <input id="star-3" type="radio" name="rating" value="star-3" />
+      <label for="star-3" title="3 stars">
+        <i class="active fa fa-star" aria-hidden="true"></i>
+      </label>
+      <input id="star-2" type="radio" name="rating" value="star-2" />
+      <label for="star-2" title="2 stars" class="selected">
+        <i class="active fa fa-star" aria-hidden="true"></i>
+      </label>
+      <input id="star-1" type="radio" name="rating" value="star-1" />
+      <label for="star-1" title="1 star" class="selected">
+        <i class="active fa fa-star" aria-hidden="true"></i>
+      </label>
+    </div>
+    <div class="flex justify-center items-center">
+      <a routerLink="/student/sclasshome/{{classDet?._id}}">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded"
+        *ngIf="classDet?.price > 0; else joinButton">
+        PAY
+      </button>
+
+      <ng-template #joinButton>
+        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-6 rounded">
+          JOIN
+        </button>
+      </ng-template>
+    </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  'use strict'
+
+  document.getElementById('button').addEventListener('click', toggleError)
+  const errMessages = document.querySelectorAll('#error')
+
+  function toggleError() {
+    // Show error message
+    errMessages.forEach((el) => {
+      el.classList.toggle('hidden')
+    })
+
+    // Highlight input and label with red
+    const allBorders = document.querySelectorAll('.border-gray-200')
+    const allTexts = document.querySelectorAll('.text-gray-500')
+    allBorders.forEach((el) => {
+      el.classList.toggle('border-red-600')
+    })
+    allTexts.forEach((el) => {
+      el.classList.toggle('text-red-600')
+    })
+  }
+</script> -->

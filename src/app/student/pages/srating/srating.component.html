@@ -1,0 +1,91 @@
+<app-snavbar></app-snavbar>
+<app-sclasshome [classId]="classId" [tutorId]="tutId"></app-sclasshome>
+<app-stoastrate *ngIf="showPopup"></app-stoastrate>
+<section class="bg-white border border-4 border-gray-200 dark:bg-gray-900 py-8 lg:py-16">
+    <div class="max-w-2xl mx-auto px-4">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Review and Rating</h2>
+      </div>
+      <form class="mb-6" (submit)="submitForm()">
+        <div class="star-rating flex justify-center items-center">
+            <div *ngIf="review.star >= 5 ; else n">
+              <input id="star-5" type="radio" name="rating" value="star-5" />
+            <label for="star-5" title="5 stars" class="selected">
+              <i class="active fa fa-star" aria-hidden="true" (click)="click(5)"></i>
+            </label>
+            </div>
+            <ng-template #n>
+              <input id="star-5" type="radio" name="rating" value="star-5" />
+              <label for="star-5" title="5 stars" >
+                <i class="active fa fa-star" aria-hidden="true" (click)="click(5)"></i>
+              </label>
+            </ng-template>
+
+            <div *ngIf="review.star >= 4 ; else r">
+              <input id="star-4" type="radio" name="rating" value="star-4" />
+              <label for="star-4" title="4 stars" class="selected">
+                <i class="active fa fa-star" aria-hidden="true" (click)="click(4)"></i>
+              </label>
+            </div>
+            <ng-template #r>
+              <input id="star-4" type="radio" name="rating" value="star-4" />
+              <label for="star-4" title="4 stars">
+                <i class="active fa fa-star" aria-hidden="true" (click)="click(4)"></i>
+              </label>
+            </ng-template>
+
+            <div *ngIf="review.star >= 3 ; else a">
+              <input id="star-3" type="radio" name="rating" value="star-3" />
+              <label for="star-3" title="3 stars" class="selected">
+                <i class="active fa fa-star" aria-hidden="true" (click)="click(3)"></i>
+              </label>
+            </div>
+            <ng-template #a>
+              <input id="star-3" type="radio" name="rating" value="star-3" />
+              <label for="star-3" title="3 stars">
+                <i class="active fa fa-star" aria-hidden="true" (click)="click(3)"></i>
+              </label>
+            </ng-template>
+
+            <div *ngIf="review.star >= 2 ; else t">
+              <input id="star-2" type="radio" name="rating" value="star-2" />
+            <label for="star-2" title="2 stars" class="selected">
+              <i class="active fa fa-star" aria-hidden="true" (click)="click(2)"></i>
+            </label>
+            </div>
+            <ng-template #t>
+              <input id="star-2" type="radio" name="rating" value="star-2" />
+            <label for="star-2" title="2 stars" >
+              <i class="active fa fa-star" aria-hidden="true" (click)="click(2)"></i>
+            </label>
+            </ng-template>
+
+            <div *ngIf="review.star >= 1 ; else s">
+              <input  id="star-1" type="radio" name="rating" value="star-1" />
+            <label for="star-1" title="1 star" class="selected">
+              <i class="active fa fa-star" aria-hidden="true" (click)="click(1)"></i>
+            </label>
+            </div>
+            <ng-template #s>
+              <input  id="star-1" type="radio" name="rating" value="star-1" />
+              <label for="star-1" title="1 star">
+                <i class="active fa fa-star" aria-hidden="true" (click)="click(1)"></i>
+              </label>
+            </ng-template>
+
+          </div>
+          <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+              
+            <label for="comment" class="sr-only">Your comment</label>
+              <textarea name="area" [(ngModel)]="review.comment" id="comment" rows="6"
+                  class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
+                  placeholder="Write a comment..." required></textarea>
+          </div>
+          <button type="submit"
+              class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-500 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+              Post comment
+          </button>
+      </form>
+      
+    </div>
+  </section>

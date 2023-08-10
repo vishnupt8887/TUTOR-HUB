@@ -1,0 +1,68 @@
+<app-slidebar></app-slidebar>
+<div class="p-4 sm:ml-64">
+    <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 ">
+        <div class="container justify-end mx-auto my-3">
+            <a class="text-xl font-bold">Student Details</a>
+            <form class="flex">
+              <input [(ngModel)]="name" name="name" class="form-input w-full mr-2" type="search" placeholder="Search" aria-label="Search" >
+              <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded" type="submit">Search</button>
+            </form>
+          </div>
+          
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-blue-100 dark:text-blue-100">
+        <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    #
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Email
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Phone
+                </th>
+                <!-- <th scope="col" class="px-6 py-3">
+                    Class
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    School
+                </th> -->
+                <th scope="col" class="px-6 py-3">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let studentList of students | student:'student':name ;index as indexOfelement" class="bg-blue-600 border-b border-blue-400 hover:bg-blue-500">
+                <th scope="row" class="px-6 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">
+                    {{indexOfelement+1}}
+                </th>
+                <td class="px-6 py-4">
+                  {{studentList.name}}
+                </td>
+                <td class="px-6 py-4">
+                  {{studentList.email}}
+                </td>
+                <td class="px-6 py-4">
+                    {{studentList.phone}}
+                </td>
+                <!-- <td class="px-6 py-4">
+                    {{studentList.class}}
+                </td>
+                <td class="px-6 py-4">
+                    {{studentList.school}}
+                </td> -->
+                <td class="px-6 py-4">
+                    <button  class="bg-green-500  text-white font-bold py-2 px-4 rounded" type="submit" (click)="studentBlock(studentList._id)" [ngClass]="{'bg-green-600 hover:bg-green-300': studentList.access, 'bg-red-600  hover:bg-red-800': !studentList.access}" style="width: 100px;">{{studentList.access ? 'Block' : 'Unblock'}}</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+

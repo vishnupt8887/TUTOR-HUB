@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+    --main-background: #d0d1dd;
+  }
+  
+  html {
+    box-sizing: border-box;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+  
+  *:focus,
+  button:focus,
+  input:focus {
+    outline: none;
+  }
+  
+  body {
+    background-color: var(--main-background);
+  }
+  
+  /* Added utilities */
+  .focus\:border-blue:focus {
+    border-color: #3490DC;
+  }
+  
+  .focus\:bg-grey-light:focus {
+    background-color: #dae1e7;
+  }
+  
+  .trans-all-linear {
+    transition: all 150ms linear;
+  }

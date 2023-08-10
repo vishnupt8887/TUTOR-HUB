@@ -1,0 +1,50 @@
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+h2 {
+    width: 100%;
+    text-align: center;
+
+    
+  }
+
+h2 a {
+      color: skyblue;
+    }
+
+.star-rating {
+  direction: rtl;
+  display: inline-block;
+  padding: 20px;
+  cursor: default;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.star-rating input[type="radio"] {
+    display: none;
+  }
+
+  .star-rating label {
+    color: #bbb;
+    font-size: 2rem;
+    padding: 0;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .star-rating label:hover,
+  .star-rating label:hover ~ .star-rating label,
+  .star-rating input[type="radio"]:checked ~ .star-rating label {
+    color: #f2b600;
+  }
+  .star-rating label.selected{
+    color: #f2b600;
+
+  }

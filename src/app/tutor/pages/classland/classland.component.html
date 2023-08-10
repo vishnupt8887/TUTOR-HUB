@@ -1,0 +1,167 @@
+
+<div class="outline-black flex  items-center m-4 border-4 border-gray-500  "style="background-image: url('https://img.freepik.com/free-photo/front-view-female-teacher-sunglasses-with-notepad-pen-green-background-school-study-book-money-work-uniform-student-document-woman-lesson_140725-156619.jpg');">
+<div class="bg-cover bg-end w-1/2 h-96 bg-emerald-600 ">
+  <div class=" flex flex-col justify-center h-full pr-12 items-center">
+    <h6 class="text-white text-3xl">“A good teacher can inspire hope,</h6>
+    <h6 class="text-white text-3xl">ignite the imagination,</h6>
+    <h6 class="text-white text-3xl"> and instill a love of learning.”</h6>
+    <h6 class="text-gray-900 pt-4  font-sans text-xl ">You can create class here</h6>
+    <a class="" routerLink="/tutor/tclass/{{tutor?._id}}">
+      <button id="button" type="submit"
+        class="flex items-center px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-pink-900 hover:bg-green-600 hover:shadow-lg focus:outline-none">
+        CREATE
+      </button>
+    </a>
+  </div>
+</div>
+<div class="w-1/2 h-96 flex justify-end ">
+  <div class=""><h1 class="text-xl my-3 text-gray-800 font-bold">Search your class here.... </h1></div>
+  <div class="my-2 px-5">
+    
+    <form class="flex justify-end">
+      <input [(ngModel)]="subject" name="subject" class="form-input  mr-2 rounded-xl" type="search"
+        placeholder="Search" aria-label="Search">
+      <button class="bg-green-800 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg" type="submit">Search</button>
+    </form>
+  </div>
+</div>
+</div>
+<!-- component -->
+<div *ngIf="clas.length >0" class=" flex justify-start gap-4 flex-wrap w-screen">
+  <div *ngFor="let c of clas | class:'class':subject;"
+    class="w-full md:w-3/12 flex flex-col md:flex-row rounded-xl shadow-xl  p-2 mx-auto border border-gray-200 bg-white">
+    
+    <div class="w-full mx:w-1/3 bg-white grid place-items-center">
+       <img src="https://clipart-library.com/images/pcqKd9nRi.png" alt="tailwind logo" class="rounded-xl" /> 
+      
+    </div>
+    <div class="w-auto md:felx-1 bg-white flex flex-col ">
+      <a routerLink="/tutor/tclassdet/{{c._id}}">
+      <h3 class="font-black text-gray-800 md:text-2xl uppercase py-2 text-xl">{{c.subject}}</h3>
+      <p class="md:text-lg text-gray-500 text-base">Class : {{c.class}}</p>
+      <p class="md:text-lg text-gray-500 text-base">Chapter : {{c.chapter}}</p>
+      <p class="text-xl font-black text-gray-800" *ngIf="c?.price>0;else free">
+        Price : {{c.price}}
+      </p>
+      <ng-template #free>
+        <p class="text-xl font-black text-gray-800">
+          Price : Free
+        </p>
+      </ng-template>
+      </a>
+      <div class="star-rating flex justify-center items-center">
+        <div *ngIf="c?.avgRating >= 5 ; else n">
+          <input id="star-5" type="radio" name="rating" value="star-5" />
+        <label for="star-5" title="5 stars" class="selected">
+          <i class="active fa fa-star" aria-hidden="true"></i>
+        </label>
+        </div>
+        <ng-template #n>
+          <input id="star-5" type="radio" name="rating" value="star-5" />
+          <label for="star-5" title="5 stars" >
+            <i class="active fa fa-star" aria-hidden="true"></i>
+          </label>
+        </ng-template>
+
+        <div *ngIf="c?.avgRating >= 4 ; else r">
+          <input id="star-4" type="radio" name="rating" value="star-4" />
+          <label for="star-4" title="4 stars" class="selected">
+            <i class="active fa fa-star" aria-hidden="true"></i>
+          </label>
+        </div>
+        <ng-template #r>
+          <input id="star-4" type="radio" name="rating" value="star-4" />
+          <label for="star-4" title="4 stars">
+            <i class="active fa fa-star" aria-hidden="true"></i>
+          </label>
+        </ng-template>
+
+        <div *ngIf="c?.avgRating >= 3 ; else a">
+          <input id="star-3" type="radio" name="rating" value="star-3" />
+          <label for="star-3" title="3 stars" class="selected">
+            <i class="active fa fa-star" aria-hidden="true"></i>
+          </label>
+        </div>
+        <ng-template #a>
+          <input id="star-3" type="radio" name="rating" value="star-3" />
+          <label for="star-3" title="3 stars">
+            <i class="active fa fa-star" aria-hidden="true"></i>
+          </label>
+        </ng-template>
+
+        <div *ngIf="c?.avgRating >= 2 ; else t">
+          <input id="star-2" type="radio" name="rating" value="star-2" />
+        <label for="star-2" title="2 stars" class="selected">
+          <i class="active fa fa-star" aria-hidden="true" ></i>
+        </label>
+        </div>
+        <ng-template #t>
+          <input id="star-2" type="radio" name="rating" value="star-2" />
+        <label for="star-2" title="2 stars" >
+          <i class="active fa fa-star" aria-hidden="true"></i>
+        </label>
+        </ng-template>
+
+        <div *ngIf="c?.avgRating >= 1 ; else m">
+          <input  id="star-1" type="radio" name="rating" value="star-1" />
+        <label for="star-1" title="1 star" class="selected">
+          <i class="active fa fa-star" aria-hidden="true" ></i>
+        </label>
+        </div>
+        <ng-template #m>
+          <input  id="star-1" type="radio" name="rating" value="star-1" />
+          <label for="star-1" title="1 star">
+            <i class="active fa fa-star" aria-hidden="true"></i>
+          </label>
+        </ng-template>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="flex w-auto justify-center items-center m-4 ">
+  <div class="m-4 p-4 border-2 border-gray-700 rounded-xl">
+    <h1 class="font-bold text-black text-center ">Your Ideas</h1>
+    <h2 class="pt-2">You can exporse your ideas in your class</h2>
+  </div>
+  <div class="m-4 p-4 border-2 border-gray-700 rounded-xl">
+    <h1 class="font-bold text-center text-black">Your Thoughts</h1>
+    <h2 class="pt-2">You can exporse your thoughts in your class</h2>
+  </div>
+  <div class="m-4 p-4 border-2 border-gray-700 rounded-xl">
+    <h1 class="font-bold text-center text-black">Your Knowledge</h1>
+    <h2 class="pt-2">You can exporse your knowledge in your class</h2>
+  </div>
+</div>
+
+<!-- pagination -->
+<div>
+  <app-tpagination
+    [currentPage]="currentPage"
+    [totalPages]="totalItems"
+    (pageChange)="onPageChange($event)"
+  ></app-tpagination>
+</div>
+
+
+<!-- <div class=" cards-list "> -->
+
+<!-- <div class="" >
+      <img src="https://www.usnews.com/object/image/00000150-1a02-dfa0-a373-fa4f6bc10000/150929-students-editorial.jpg?update-time=1443545684956&size=responsive640">
+      
+    </div> -->
+<!-- <div *ngIf="clas.length >0" class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
+    <div *ngFor="let c of clas | class:'class':subject;" class="card 1">
+      <div class="card_image py-5">
+        <a routerLink="/tutor/tclassdet/{{c._id}}">
+          <img src="https://clipart-library.com/images/pcqKd9nRi.png" />
+        </a>
+      </div>
+      <div class="card_title title-white">
+        <p class="text-black">Subject : {{c.subject}}</p>
+        <p class="text-black text-xl">Class : {{c.class}}</p>
+      </div>
+    </div>
+  </div>
+</div> -->
