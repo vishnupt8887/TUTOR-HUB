@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
 import { Observable, mergeMap, of } from 'rxjs'
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class ApiservicesService {
   }
   constructor(private http:HttpClient) { }
 
-  localhost = 'http://localhost:3000'
+  localhost = environment.bckend
 
   ssignup(data:any):Observable<any>{
     return this.http.post(`${this.localhost}/student/signup`,data,this.httpOptions)
@@ -54,5 +55,16 @@ export class ApiservicesService {
 
   videoFetch(id:any,currentpage:any,pagesize:any):Observable<any>{
     return this.http.get(`${this.localhost}/student/videoFetch/${id}/${currentpage}/${pagesize}`)
+  }
+
+  clsFetch(currentpage:any,pagesize:any):Observable<any>{
+    return this.http.get(`${this.localhost}/student/studentClass/${currentpage}/${pagesize}`)
+  }
+
+  paymentStart(data:{}){
+     return this.http.post(`${this.localhost}/student/paymentStart`,data)
+  }
+  verifyPayment(payment:any,order:any,data:any){
+      return this.http.post<{status:string}>(`${this.localhost}/student/verifyPayment`,{payment,order,data})
   }
 }

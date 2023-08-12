@@ -17,17 +17,11 @@ export class SclasshomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.class(this.clsId)
-    console.log(this.tutorId,"tutor id");
-    console.log(this.classId,"classId");
-    
-    
   }
 
   class(id:any){
     this.services.classIn(id).subscribe((data:any)=>{
-      console.log(data,'cls data');
       this.cls = data.data 
-      console.log(this.cls,'class data');
     })
   }
 }

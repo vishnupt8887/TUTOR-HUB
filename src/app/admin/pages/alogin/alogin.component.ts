@@ -17,7 +17,6 @@ export class AloginComponent implements OnInit {
 constructor(private services:AservicesService, private store:Store<appstateinterface>){}
   ngOnInit(): void {
     this.store.pipe(select(erroSelector)).subscribe((data)=>{
-        console.log(data,'admin login error');
     
         this.error= data
        })
@@ -33,7 +32,7 @@ constructor(private services:AservicesService, private store:Store<appstateinter
     this.services.alogin(data).subscribe(()=>{
 
     })
-    console.log(data);
+     ;
     if(data){
    this.store.dispatch(action.login({logindata:data}))
 

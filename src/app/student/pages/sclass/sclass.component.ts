@@ -22,20 +22,12 @@ export class SclassComponent implements OnInit{
     this.fetchData()
   }
 
-  // findClass(){
-  //   this.service.classdata().subscribe((data:any)=>{
-  //     this.class = data.data
-  //     console.log(this.class,'class data');
-  //   })
-  // }
 
   fetchData() {
     this.service.getPaginatedData(this.currentPage, this.pageSize)
       .subscribe((data:any) => {
         this.class = data.data;
         this.totalItems = data.totalCount;
-        console.log(this.class,'class data');
-        console.log(this.totalItems,'class totalCount');
       });
   }
 

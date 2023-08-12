@@ -16,26 +16,20 @@ export class VideomodalComponent {
   }
 
   closeModal() {
-    console.log('close videomodal');
     
    this.fetch.emit({close:true,fetch:false})
   }
   setFile(event:any){
     this.datas.video = event.target.files[0]
-    console.log('video');
     
   }
   uploadVideo(event:any){
-    console.log('entered video upload');
     const formData = new FormData();
     formData.append('video', this.datas.video);
     formData.append('description', this.datas.description)
-    console.log(formData,'formData');
     this.service.videoAdd(formData,this.clsId).subscribe((data)=>{
-      console.log(data,'video upload dattaaaa');
       this.data=data
       this.fetch.emit({close:true,fetch:data.success})
-      console.log('data success',data.success);
       
     })
     

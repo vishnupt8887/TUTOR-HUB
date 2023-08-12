@@ -24,7 +24,7 @@ click(val:number){
 submitForm(){
   const data = this.review
   this.service.reviewSubmit(data).subscribe((data)=>{
-    console.log(data,'review data success');
+    
     if(data.data.success){
       this.showPopupMessage()
     }

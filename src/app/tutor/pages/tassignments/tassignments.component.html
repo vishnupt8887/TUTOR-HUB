@@ -1,50 +1,5 @@
 <app-navbar></app-navbar>
 <app-classhome [classId]="classId"></app-classhome>
-<!-- <div class="container justify-end mx-auto">
-    <a class="text-xl pl-2 font-bold"></a>
-    <form class="flex px-2">
-      <input  name="name" class="form-input py-2 w-full mr-2" type="search" placeholder="Search" aria-label="Search" >
-      <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded" type="submit">Search</button>
-    </form>
-  </div> -->
-<!-- <app-modal [clsId]="classId" *ngIf="isModalOpen" (close)="closeModal()"></app-modal>
-
-<div class=" flex justify-start gap-4 p-8 border-gray-300 border-4 flex-wrap w-screen">
-  <div
-    class="w-full md:w-1/6 flex flex-col md:flex-row rounded-xl shadow-xl  p-2 mx-auto border border-gray-200 bg-white">
-    <div class="w-full w-32 p-3  bg-white grid place-items-center">
-      <a>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUhH8LklQ32EbmuZ6OXgnsXG2xRRySrLnM8g&usqp=CAU"
-          alt="tailwind logo" class=" w-32 h-32 rounded-xl" />
-
-        <div class=" md:felx-1 bg-white flex flex-col ">
-          <h3 class="font-black text-center text-gray-800 md:text-lg uppercase  text-xl">Assignment</h3>
-          <button (click)="openModal()" class="py-2 text-sm text-white font-semibold bg-blue-500 rounded" tabindex="0"
-            type="button">Upload</button>
-        </div>
-      </a>
-    </div>
-  </div> -->
-<!-- <img  src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/640px-PDF_file_icon.svg.png" alt="tailwind logo" class="w-32 h-32 rounded-xl" />  -->
-<!-- <div *ngFor="let a of assignment"
-    class="w-full md:w-1/6 flex flex-col md:flex-row rounded-xl shadow-xl  p-2 mx-auto border border-gray-200 bg-white">
-
-    <div class="w-full w-32 p-3 bg-white grid place-items-center">
-      
-      <pdf-viewer
-      [src]="a.path"
-      [render-text]="true"
-      [original-size]="false"
-      class="w-32 h-32 rounded-xl" 
-    ></pdf-viewer>
-      <div class="w-auto md:felx-1 bg-white flex flex-col ">
-
-        <h3 class="font-black text-gray-800 md:text-2xl uppercase py-2 text-xl"></h3>
-      </div>
-    </div>
-  </div>
-
-</div> -->
 <!-- modal -->
 <app-modal (fetch)="fetch($event)" [clsId]="classId" *ngIf="isModalOpen" ></app-modal>
 <!-- component -->
@@ -58,7 +13,7 @@
       <div class="my-2 px-5">
 
         <form class="flex justify-end">
-          <input name="subject" class="form-input  mr-2 rounded-xl" type="search" placeholder="Search"
+          <input [(ngModel)]="assignments" name="subject" class="form-input  mr-2 rounded-xl" type="search" placeholder="Search"
             aria-label="Search">
           <button class="bg-gray-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg"
             type="submit">Search</button>
@@ -110,7 +65,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let assignment of assignment">
+              <tr *ngFor="let assignment of assignment | class:'assignments':assignments;">
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                   <div class="flex justify-center">
                     <div class="ml-3">

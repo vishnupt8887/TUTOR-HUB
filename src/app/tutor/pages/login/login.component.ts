@@ -18,7 +18,6 @@ constructor(private services:TservicesService, private store:Store<appstateinter
 
 ngOnInit(): void {
   this.store.pipe(select(erroSelector)).subscribe((data)=>{
-      console.log(data,'Tutor login error');
   
       this.error= data
      })
@@ -34,7 +33,7 @@ ngOnInit(): void {
     this.services.tlogin(data).subscribe(()=>{
 
     })
-    console.log(data);
+     ;
     if(data){
    this.store.dispatch(action.login({logindata:data}))
 

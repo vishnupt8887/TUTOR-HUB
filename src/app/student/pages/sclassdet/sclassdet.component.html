@@ -144,21 +144,23 @@
         </div>
           <div class="flex justify-center items-center mb-8">
           
-            <a routerLink="/student/sclassin/{{classDet?._id}}/{{classDet?.tutor._id}}">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded"
+           
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded" 
+              (click)="buy(classDet?._id,classDet?.price,classDet?.tutor._id)"
               *ngIf="classDet?.price > 0; else joinButton">
               PAY
             </button>
-      
+            
             <ng-template #joinButton>
+              <a routerLink="/student/sclassin/{{classDet?._id}}/{{classDet?.tutor._id}}">
               <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-6 rounded">
                 JOIN
               </button>
+            </a>
             </ng-template>
-          </a>
           </div> 
           </div>
-          <div *ngFor="let s of classDet.review " class="flex items-center w-1/2">
+          <div *ngFor="let s of classDet?.review " class="flex items-center w-1/2 overflow-y-scroll">
             <article>
                 <div class="relative z-0 w-full mb-2 text-xl font-bold  text-center">
                     <H6>Review</H6>
@@ -166,7 +168,7 @@
                 <div class="flex items-center mb-4 space-x-4">
                     <img class="w-10 h-10 rounded-full" src="https://c8.alamy.com/comp/TC2FPE/young-man-avatar-cartoon-character-profile-picture-TC2FPE.jpg" alt="">
                     <div class="space-y-1 font-medium dark:text-white">
-                        <p>{{s?.student.name}} <time datetime="2014-08-16 19:00" class="block text-sm text-gray-500 dark:text-gray-400">Review uploaded at {{s?.date | date:'short'}}</time></p>
+                        <p>{{s?.student?.name}} <time datetime="2014-08-16 19:00" class="block text-sm text-gray-500 dark:text-gray-400">Review uploaded at {{s?.date | date:'short'}}</time></p>
                     </div>
                 </div>
                 <div class="star-rating flex justify-center items-center">

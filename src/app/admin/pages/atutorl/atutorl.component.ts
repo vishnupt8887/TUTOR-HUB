@@ -21,7 +21,7 @@ export class AtutorlComponent implements OnInit{
      })
   }
 
-  tutorBlock(id:any){
+  tutorBlock(id:string){
     this.store.dispatch(action.tutorBlock({id}))
     
   }

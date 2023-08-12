@@ -10,7 +10,7 @@ import { TservicesService } from '../../services/tservices.service';
 })
 export class TvideoComponent {
   
-  
+  videos:string=''
   currentPage = 1;
   pageSize = 6;
   totalItems: number = 0
@@ -18,7 +18,6 @@ export class TvideoComponent {
   constructor(private activatedRoute:ActivatedRoute, private service:TservicesService,private sanitizer: DomSanitizer){}
   ngOnInit(): void {
     this.classId =  this.activatedRoute.snapshot.paramMap.get('clsId') ?? ''
-    console.log(this.classId,'class iidddddd')
     this.fetchVideo(this.classId)
   }
   isModalOpen = false;
@@ -33,24 +32,19 @@ export class TvideoComponent {
   
 
   fetch(status:{close:boolean,fetch:boolean}){
-    console.log('fetchinggggggg',status);
     
     if(status.fetch) this.fetchVideo(this.classId)
     if(status.close)  this.isModalOpen = false;
   }
 
   fetchVideo(id:any){
-    console.log(id,'hiiiii')
     this.service.videoFetch(id,this.currentPage, this.pageSize).subscribe((data:any)=>{
-      console.log(data,'new ddddd');
       this.video = data.data
       this.totalItems = data.totalCount;
-      console.log(this.video,'video data');
     })
   }
   
   onPageChange(page: number) {
-    console.log(page,'helo....',this.totalItems)
     if (page >= 1 && page <= this.totalItems) {
       this.currentPage = page;
       this.fetchVideo(this.classId);
@@ -59,7 +53,6 @@ export class TvideoComponent {
 
   delete(id:string){
     this.service.videoDelete(id,this.classId).subscribe((data)=>{
-      console.log('delete video');
       this.fetchVideo(this.classId)
     })
     }

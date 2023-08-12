@@ -21,18 +21,14 @@ export class EditclassComponent implements OnInit{
   }
 
   class(id:any){
-    console.log(id)
     this.services.classdataedit(id).subscribe((data:any)=>{
-      console.log(data,'class data in edit');
       this.classData = data.data
     })
   }
 
   formSubmit(){
     const data = this.classData
-    console.log(data,'edit form data');
     this.services.classEdit(data).subscribe((data:any)=>{
-      console.log(data,'form data from backend');
       if(data.success){
         this.router.navigate(['tutor/tclassdet', this.classId ]);
 

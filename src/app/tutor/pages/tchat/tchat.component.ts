@@ -14,16 +14,15 @@ export class TchatComponent implements OnInit {
   chatLists : Array<{_id:String,name:String,email:String}> = []
   messageArray: Array<{tutor?: String ,student? : String,userName:String, message: {msg:any,date:Date}}> = [];
 
-  currentTutor : String | undefined
+  currentTutor !: String 
   tutorName : String | undefined
   chatStudent !: {_id:String,name:String,email:String}
-  roomId : String | undefined
+  roomId !: String 
   public message!: String;
 
   constructor(private chatService:ChatservicesService,private store:Store<appstateinterface>,private activatedRoute:ActivatedRoute){
     chatService.connect()
     this.chatService.newMessageReceived().subscribe(data => {
-      console.log(data,'datatataatatatataatat');
       
       this.messageArray.push(data)
     })
@@ -32,15 +31,14 @@ export class TchatComponent implements OnInit {
   classId = this.activatedRoute.snapshot.paramMap.get('clsId') ?? '';
 
   ngOnInit(): void {
-   this.chatService.getChatRooms().subscribe((data:any)=>{
-    console.log(data,'datalist of rooms');
+   this.chatService.getChatRooms(this.classId).subscribe((data:any)=>{
+    console.log(data,',,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,');
     
     this.chatLists = data.data
    })
 
    this.store.select('tutorState').subscribe((data)=>{
-    console.log(data,'logged')
-    this.currentTutor = data.tutor?._id
+    this.currentTutor = data.tutor?._id ? data.tutor?._id : ''
    })
 
  
@@ -48,7 +46,6 @@ export class TchatComponent implements OnInit {
 
   }
   joinChat(student:any){
-    console.log(student,'student......................................................................');
     
     this.chatStudent = student
     this.roomId = this.currentTutor + student._id;
@@ -56,7 +53,6 @@ export class TchatComponent implements OnInit {
 
     if(this.roomId){
       this.chatService.getChats(this.roomId).subscribe((data:any)=>{
-        console.log(data,'data');
         
             this.messageArray = data.data
       })

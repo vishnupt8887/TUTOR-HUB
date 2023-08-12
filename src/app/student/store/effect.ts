@@ -11,7 +11,7 @@ export class studentEffect{
     signup=createEffect(()=>{
   return  this.actions$.pipe(ofType(Action.signup),mergeMap((action)=>{
         return this.apiservice.ssignup(action.formData).pipe(map((data)=>{
-                      console.log(data,'from bckend student');
+                       ;
                       
               return Action.signupsuccess({data:data.data,token:data.token})
         }))
@@ -28,9 +28,9 @@ export class studentEffect{
     login=createEffect(()=>{
         return  this.actions$.pipe(ofType(Action.login),mergeMap((action)=>{
               return this.apiservice.slogin(action.logindata).pipe(map((data)=>{
-                            console.log(data.error,'from bckend student');
+                             ;
                             if(data.error !== null){
-                                console.log('hoiiiiiiiiiiiiiiiiiiii');
+                                 ;
                                 
                                 return Action.loginfailure({error:data.error})
                             }
@@ -41,7 +41,7 @@ export class studentEffect{
           loginSuccess = createEffect(()=>{
               return this.actions$.pipe(ofType(Action.loginsuccess),tap((data)=>{
                   localStorage.setItem('studentToken',JSON.stringify(data.token))
-                  console.log('home coming spiderman');
+                   ;
                   
                     this.route.navigate(['student/shome'])
               }))

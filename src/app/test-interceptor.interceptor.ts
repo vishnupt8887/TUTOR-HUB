@@ -6,41 +6,17 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { TokenService } from './services/token.service';
 
 @Injectable()
 export class TestInterceptorInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor(private service : TokenService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-       console.log(request.url,'urlllllllllllllllll'
-       );
-       
-    if(request.url.includes('/admin')){
-      if(localStorage.getItem('adminToken')){
-        request = request.clone({
-          setHeaders:{
-            Authorization : `Bearer ${JSON.parse(localStorage.getItem('adminToken')??'')}`
-          }
-        })
-      }
-    }else if(request.url.includes('/tutor') || request.url.includes('/getChatRooms')){
-      if(localStorage.getItem('tutorToken')){
-        request = request.clone({
-          setHeaders:{
-            Authorization : `Bearer ${JSON.parse(localStorage.getItem('tutorToken')??'')}`
-          }
-        })
-      }
-    }else{
-      if(localStorage.getItem('studentToken')){
-        request = request.clone({
-          setHeaders:{
-            Authorization : `Bearer ${JSON.parse(localStorage.getItem('studentToken')??'')}`
-          }
-        })
-      }
-    }
-    return next.handle(request);
+   
+    let req = this.service.tokenHelper(request)
+   
+    return next.handle(req ? req : request);
   }
 }

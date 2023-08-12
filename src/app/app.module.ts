@@ -66,6 +66,7 @@ import { QuestionmodalComponent } from './tutor/pages/questionmodal/questionmoda
 import { QuespageComponent } from './tutor/pages/quespage/quespage.component';
 import { DemomodalComponent } from './tutor/pages/demomodal/demomodal.component';
 import { SquespageComponent } from './student/pages/squespage/squespage.component';
+import { StudentclassComponent } from './student/pages/studentclass/studentclass.component';
 
 @NgModule({
   declarations: [
@@ -116,7 +117,8 @@ import { SquespageComponent } from './student/pages/squespage/squespage.componen
     QuestionmodalComponent,
     QuespageComponent,
     DemomodalComponent,
-    SquespageComponent
+    SquespageComponent,
+    StudentclassComponent
   ],
   imports: [
     BrowserModule,

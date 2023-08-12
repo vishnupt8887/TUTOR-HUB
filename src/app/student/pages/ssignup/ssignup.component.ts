@@ -24,10 +24,6 @@ export class SsignupComponent {
   
     sumbitSignup(){
       const fdata = this.signup.value
-      console.log(fdata,'signupdata');
-      // let student = this.store.select('studentState').subscribe((data)=>{
-      //   data.user?.email
-      // })
       if(fdata.password === fdata.repassword){
 
         this.store.dispatch(action.signup({formData:fdata}))

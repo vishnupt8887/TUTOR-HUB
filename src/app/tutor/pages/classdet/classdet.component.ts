@@ -18,16 +18,13 @@ export class ClassdetComponent implements OnInit{
 
   findClsDet(id:any){
     this.services.classDet(id).subscribe((data:any)=>{
-      console.log(data,'class detail data');
       this.clsdet = data.data
-      console.log(this.clsdet,'class details');
       
     })
   }
 
   deleteClass(id:any){
     this.services.deleteClass(id).subscribe((data:any)=>{
-      console.log(data,'class deleted')
       this.router.navigate(['tutor/thome'])
     })
   }

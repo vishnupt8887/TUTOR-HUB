@@ -23,7 +23,6 @@ export class SignupComponent {
 
   loginSubmit(){
     const fdata = this.lData
-    console.log(fdata,'tutor signup data')
 
     if(fdata.password === fdata.repassword){
       this.store.dispatch(action.signup({formData:fdata}))

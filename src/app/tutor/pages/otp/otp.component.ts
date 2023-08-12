@@ -20,7 +20,6 @@ if(this.seconds>=0){
 const values = data.value
 this.code = values.f + values.s + values.t + values.fr
 const code =  this.code
-console.log(code,'cdddddd');
 
 
 this.store.dispatch(action.otpVerify({otp:code}))

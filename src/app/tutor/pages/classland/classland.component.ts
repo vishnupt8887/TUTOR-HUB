@@ -26,7 +26,6 @@ export class  ClasslandComponent  implements OnInit{
 
   tutors(){
     this.services.tutorData().subscribe((data:any)=>{
-      console.log(data,'tutor data');
       this.tutor = data.data
     })
   }
@@ -36,8 +35,6 @@ export class  ClasslandComponent  implements OnInit{
       .subscribe((data:any) => {
         this.clas = data.data;
         this.totalItems = data.totalCount;
-        console.log(this.clas,'class data');
-        console.log(this.totalItems,'class totalCount');
       });
   }
 

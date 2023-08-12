@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class TservicesService {
 
   constructor(private http:HttpClient) { }
 
-  localhost = 'http://localhost:3000'
+  localhost = environment.bckend
 
   tsignup(data:any):Observable<any>{
     return this.http.post(`${this.localhost}/tutor/signup`,data,this.httpOptions)
@@ -87,6 +88,10 @@ export class TservicesService {
 
   videoFetch(id:any,currentpage:any,pagesize:any):Observable<any>{
     return this.http.get(`${this.localhost}/tutor/videoFetch/${id}/${currentpage}/${pagesize}`)
+  }
+
+  studentsFetch(id:any,currentpage:any,pagesize:any):Observable<any>{
+    return this.http.get(`${this.localhost}/tutor/studentsInClass/${id}/${currentpage}/${pagesize}`)
   }
 
   questionDelete(id:any,clsId:any):Observable<any>{

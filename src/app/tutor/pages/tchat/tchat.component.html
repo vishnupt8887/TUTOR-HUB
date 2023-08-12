@@ -67,7 +67,7 @@
 
 
                 <!-- Right -->
-                <div class="w-full border flex flex-col" >
+                <div *ngIf="chatStudent" class="w-full border flex flex-col" >
 
                     <!-- Header -->
                     <div class="border-4 pt-2 pb-2 border-gray-300 px-3 bg-grey-lighter flex flex-row justify-between items-center">
@@ -77,7 +77,7 @@
                             </div>
                             <div class="ml-4">
                                 <p class="text-white">
-                                    Sidarth
+                                    {{chatStudent.name}}
                                 </p>
                                 <p class="text-grey-darker text-xs mt-1">
                                     

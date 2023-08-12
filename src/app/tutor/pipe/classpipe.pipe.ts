@@ -13,10 +13,25 @@ export class ClasspipePipe implements PipeTransform {
     if(query == ''){
       return value
     }else if(arg == 'class'){
-      console.log(value,arg,query);
       
       return value.filter((subject)=>{
         return subject.subject.match(regEx)
+      })
+    }else if(arg=='questions'){
+      return value.filter((question)=>{
+       return question.description.match(regEx)
+      })
+    }else if(arg=='assignments'){
+      return value.filter((assignment)=>{
+        return assignment.description.match(regEx)
+      })
+    }else if(arg=='videos'){
+      return value.filter((video)=>{
+        return video.description.match(regEx)
+      })
+    }else if(arg=='names'){
+      return value.filter((names)=>{
+        return names.name.match(regEx)
       })
     }
     return []

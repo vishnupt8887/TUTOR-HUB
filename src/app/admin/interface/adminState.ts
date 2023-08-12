@@ -4,7 +4,7 @@ import { aTutorState } from "./aTutorState";
 export interface adminState{
     isLogged:Boolean;
     isLoading:Boolean,
-    error:any; 
+    error:string; 
     admin:{
         email:string,
         password:string

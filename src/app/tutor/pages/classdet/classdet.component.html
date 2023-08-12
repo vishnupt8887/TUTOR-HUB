@@ -145,7 +145,7 @@
           </button>  
         </div>
           </div>
-          <div *ngFor="let s of clsdet.review " class="flex items-center w-1/2">
+          <div *ngFor="let s of clsdet?.review " class="flex items-center w-1/2 overflow-y-scroll">
             <article>
                 <div class="relative z-0 w-full mb-2 text-xl font-bold  text-center">
                     <H6>Review</H6>
@@ -153,7 +153,7 @@
                 <div class="flex items-center mb-4 space-x-4">
                     <img class="w-10 h-10 rounded-full" src="https://c8.alamy.com/comp/TC2FPE/young-man-avatar-cartoon-character-profile-picture-TC2FPE.jpg" alt="">
                     <div class="space-y-1 font-medium dark:text-white">
-                        <p>{{s?.student.name}} <time datetime="2014-08-16 19:00" class="block text-sm text-gray-500 dark:text-gray-400">Review uploaded at {{s?.date | date:'short'}}</time></p>
+                        <p>{{s?.student?.name}} <time datetime="2014-08-16 19:00" class="block text-sm text-gray-500 dark:text-gray-400">Review uploaded at {{s?.date | date:'short'}}</time></p>
                     </div>
                 </div>
                 <div class="star-rating flex justify-center items-center">
@@ -209,13 +209,13 @@
                   </label>
                   </ng-template>
         
-                  <div *ngIf="s?.star >= 1 ; else s">
+                  <div *ngIf="s?.star >= 1 ; else m">
                     <input  id="star-1" type="radio" name="rating" value="star-1" />
                   <label for="star-1" title="1 star" class="selected">
                     <i class="active fa fa-star" aria-hidden="true" ></i>
                   </label>
                   </div>
-                  <ng-template #s>
+                  <ng-template #m>
                     <input  id="star-1" type="radio" name="rating" value="star-1" />
                     <label for="star-1" title="1 star">
                       <i class="active fa fa-star" aria-hidden="true"></i>

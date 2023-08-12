@@ -27,9 +27,7 @@ export class ClassComponent implements OnInit {
 
   formSubmit(){
     const data=this.createClass
-    console.log(data,'classs forrmm');
     this.service.classCreate(data).subscribe((data:any)=>{
-      console.log(data,"FORM+++++++++++++++");
       if(data.success){
         this.route.navigate(['tutor/tclassdet',data.data._id])
       }

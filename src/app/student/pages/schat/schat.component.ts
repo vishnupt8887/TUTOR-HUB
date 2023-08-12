@@ -26,7 +26,6 @@ export class SchatComponent implements OnInit {
 
     chat.connect()
     this.chat.newMessageReceived().subscribe(data => {
-      console.log(data,'datatataatatatataatat');
       
       this.messageArray.push(data)
     })
@@ -36,7 +35,6 @@ export class SchatComponent implements OnInit {
     let tuId = this.router.snapshot.paramMap.get('tId') ?? ''
 
      this.store.select('studentState').subscribe((data)=>{
-         console.log(data,'data');
          
         this.currentUserId = data.user?._id ;
         this.currentName = data.user?.name;
@@ -47,7 +45,6 @@ export class SchatComponent implements OnInit {
         this.chat.joinRoom(datas)
 
         this.chat.getChats(this.chatroom).subscribe((data:any)=>{
-          console.log(data,'data');
           
               this.messageArray = data.data
         })
@@ -61,7 +58,7 @@ export class SchatComponent implements OnInit {
   }
 
   sendMessage() {
-  console.log(this.currentName,'username');
+   ;
   
     this.chat.sendMessage({room: this.chatroom, user: this.currentUserId,student:true,userName: this.currentName, message: this.message});
     this.message = '';

@@ -19,7 +19,6 @@ export class SloginComponent implements OnInit{
 
   ngOnInit(): void {
     this.store.pipe(select(erroSelector)).subscribe((data)=>{
-        console.log(data,'student login error');
     
         this.error= data
        })
@@ -35,7 +34,7 @@ export class SloginComponent implements OnInit{
     this.services.slogin(data).subscribe(()=>{
 
     })
-    console.log(data);
+     ;
     if(data){
    this.store.dispatch(action.login({logindata:data}))
 

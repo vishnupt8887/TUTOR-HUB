@@ -13,7 +13,7 @@
       <div class="my-2 px-5">
 
         <form class="flex justify-end">
-          <input name="subject" class="form-input  mr-2 rounded-xl" type="search" placeholder="Search"
+          <input [(ngModel)]="videos" name="videos" class="form-input  mr-2 rounded-xl" type="search" placeholder="Search"
             aria-label="Search">
           <button class="bg-gray-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg"
             type="submit">Search</button>
@@ -53,7 +53,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let v of video">
+              <tr *ngFor="let v of video | sclass:'videos':videos;">
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                   <div class="flex justify-center">
                     <div class="ml-3">

@@ -24,7 +24,7 @@ export class AstudentlComponent implements OnInit {
     })
   }
 
-  studentBlock(id:any){
+  studentBlock(id:string){
     this.store.dispatch(action.studentBlock({id}))
   }
 

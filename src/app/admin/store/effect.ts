@@ -7,6 +7,8 @@ import { AservicesService } from "../services/aservices.service";
 import { HttpClient } from "@angular/common/http";
 import { appstateinterface } from "src/app/appstate";
 import { Store } from "@ngrx/store";
+import { aStudentState } from "../interface/aStudentState";
+import { aTutorState } from "../interface/aTutorState";
 const localhost = 'http://localhost:3000'
 
 @Injectable()
@@ -14,11 +16,10 @@ export class adminEffect {
    login = createEffect(() => {
       return this.actions$.pipe(ofType(Action.login), mergeMap((action) => {
          return this.aservice.alogin(action.logindata).pipe(map((data) => {
-            console.log(data, 'from bckend admin');
             if (data.success) {
                return Action.loginsuccess({ data: data.data, token: data.token })
             } else {
-               return Action.loginfailure({ error: data.error })
+               return Action.loginfailure({ error: (data.error as string) })
             }
 
          }))
@@ -27,7 +28,7 @@ export class adminEffect {
 
    loginSuccess = createEffect(() => {
       return this.actions$.pipe(ofType(Action.loginsuccess), tap((data) => {
-         console.log(data.token, 'token');
+          ;
 
          localStorage.setItem('adminToken',JSON.stringify(data.token))
          this.route.navigate(['/admin/ahome'])
@@ -36,7 +37,7 @@ export class adminEffect {
 
    studentListStart = createEffect(() => {
       return this.actions$.pipe(ofType(Action.studentListFetch), switchMap(() => {
-         return this.http.get(`${localhost}/admin/studentLt`).pipe(map((result: any) => {
+         return this.http.get<aStudentState[]>(`${localhost}/admin/studentLt`).pipe(map((result: aStudentState[]) => {
             return Action.studentListFetchSuccess({ students: result })
          }))
       }))
@@ -44,15 +45,15 @@ export class adminEffect {
 
    tutorListStart = createEffect(() => {
       return this.actions$.pipe(ofType(Action.tutorListFetch), switchMap(() => {
-         return this.http.get(`${localhost}/admin/tutorLt`).pipe(map((result: any) => {
+         return this.http.get<aTutorState[]>(`${localhost}/admin/tutorLt`).pipe(map((result: aTutorState[]) => {
             return Action.tutorListFetchSuccess({ tutors: result })
          }))
       }))
    })
 
    tutorBlockStart = createEffect(() => {
-      return this.actions$.pipe(ofType(Action.tutorBlock), switchMap((id: any) => {
-         return this.http.patch(`${localhost}/admin/tutorBlock`, { id }).pipe(map((data: any) => {
+      return this.actions$.pipe(ofType(Action.tutorBlock ), switchMap((id) => {
+         return this.http.patch<{_id:string}>(`${localhost}/admin/tutorBlock`, { id }).pipe(map((data: {_id:string}) => {
             this.store.dispatch(
                Action.tutorListFetch()
             )
@@ -62,8 +63,8 @@ export class adminEffect {
    })
 
    studentBlockStart = createEffect(() => {
-      return this.actions$.pipe(ofType(Action.studentBlock),switchMap((id:any) => {
-         return this.http.patch(`${localhost}/admin/studentBlock`,{id}).pipe(map((data:any) => {
+      return this.actions$.pipe(ofType(Action.studentBlock),switchMap((id) => {
+         return this.http.patch<{_id:string}>(`${localhost}/admin/studentBlock`,{id}).pipe(map((data:{_id:string}) => {
             this.store.dispatch(
                Action.studentListFetch()
             )

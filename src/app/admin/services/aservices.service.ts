@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,9 @@ export class AservicesService {
   }
   constructor(private http:HttpClient) { }
 
-  localhost = 'http://localhost:3000'
+  localhost = environment.bckend
 
-  alogin(data:any):Observable<any>{
-    return this.http.post(`${this.localhost}/admin/login`,data,this.httpOptions) 
+  alogin(data:{email :string, password :string}):Observable<{data: null, success: boolean, token: string, error: null | string}>{
+    return this.http.post<{data: null, success: boolean, token: string, error: null | string}>(`${this.localhost}/admin/login`,data,this.httpOptions) 
   }
 }

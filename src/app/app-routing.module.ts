@@ -32,6 +32,8 @@ import { SratingComponent } from './student/pages/srating/srating.component';
 import { TassignpdfComponent } from './tutor/pages/tassignpdf/tassignpdf.component';
 import { TvideoComponent } from './tutor/pages/tvideo/tvideo.component';
 import { TclassstudentlistComponent } from './tutor/pages/tclassstudentlist/tclassstudentlist.component';
+import { StudentclassComponent } from './student/pages/studentclass/studentclass.component';
+
 
 const routes: Routes = [
   {path:'tlogin',component:LoginComponent},
@@ -58,6 +60,7 @@ const routes: Routes = [
   {path:'student/sassignment/:clsId/:tuId',component:SassignmentsComponent},
   {path:'student/squestion/:clsId/:tuId',component:SquestionpaperComponent},
   {path:'student/srating/:clsId/:tuId',component:SratingComponent},
+  {path:'student/studentclass',component:StudentclassComponent},
   {path:'student/shome',component:ShomeComponent, canActivate:[StudentauthGuard]},
 
   {path:'alogin',component:AloginComponent},
@@ -68,7 +71,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash:true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

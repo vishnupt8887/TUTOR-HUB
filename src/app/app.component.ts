@@ -23,9 +23,7 @@ export class AppComponent implements OnInit{
 
   tutorCheck(){
     this.service.tutorcheck().subscribe((data:any)=>{
-      console.log(data,'tutor check data');
       let refreshToken = JSON.parse(localStorage.getItem('tutorToken') || '')
-      console.log(refreshToken,'refreshToken tutor');
       this.store.dispatch(action.tutorcheck({data:data,token:refreshToken}))
         // this.route.navigate(['tutor/tlogin'])
     })
@@ -33,11 +31,10 @@ export class AppComponent implements OnInit{
 
   studentCheck(){
     this.service.studentcheck().subscribe((data:any)=>{
-      console.log(data,'student check data');
       let refreshToken = JSON.parse(localStorage.getItem('studentToken') || '')
-      console.log(refreshToken,'refreshToken student');
       
       this.store.dispatch(Action.studentcheck({data:data,token:refreshToken}))
     })
   }
 }
+
