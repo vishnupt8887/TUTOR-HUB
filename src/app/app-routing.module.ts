@@ -36,6 +36,7 @@ import { StudentclassComponent } from './student/pages/studentclass/studentclass
 
 
 const routes: Routes = [
+  {path:'',redirectTo:'/tlogin',pathMatch:'full'},
   {path:'tlogin',component:LoginComponent},
   {path:'tsignup',component:SignupComponent},
   {path:'tutor/totp',component:OtpComponent},

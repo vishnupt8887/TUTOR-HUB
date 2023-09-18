@@ -33,7 +33,6 @@ ngOnInit(): void {
     this.services.tlogin(data).subscribe(()=>{
 
     })
-     ;
     if(data){
    this.store.dispatch(action.login({logindata:data}))
 

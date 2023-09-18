@@ -70,7 +70,8 @@ data = {studentId :this.studentId,classId : '',amount:0}
       "image": "https://example.com/your_logo",
       "order_id": res.data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
       "handler": function (response:any){
-   
+           console.log(response,'rrrrr');
+           
            verifyPayment(response,res)
       },
       "prefill": {
@@ -101,6 +102,10 @@ data = {studentId :this.studentId,classId : '',amount:0}
 var Outerthis = this;
   rzp1.open();
    function verifyPayment(paymentResponse:any,order:any){
+    console.log(order,'order');
+    console.log(paymentResponse,'paymentResponse');
+    
+    
         Outerthis.services.verifyPayment(paymentResponse,order,Outerthis.data).subscribe((data:{status:string})=> {
           
           if(data.status) {

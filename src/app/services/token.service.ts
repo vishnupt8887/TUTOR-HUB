@@ -8,28 +8,37 @@ export class TokenService {
 
   constructor() { }
 
-  tokenHelper(request:HttpRequest<unknown>){
-    if(request.url.includes('/admin')){
-      if(localStorage.getItem('adminToken')){
+  tokenHelper(request: HttpRequest<unknown>) {
+    if (request.url.includes('/admin')) {
+      if (localStorage.getItem('adminToken')) {
         request = request.clone({
-          setHeaders:{
-            Authorization : `Bearer ${JSON.parse(localStorage.getItem('adminToken')??'')}`
+          setHeaders: {
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem('adminToken') ?? '')}`
           }
         })
       }
-    }else if(request.url.includes('/tutor') || request.url.includes('/getChatRooms')){
-      if(localStorage.getItem('tutorToken')){
+    } else if (request.url.includes('/tutor') || request.url.includes('/getChatRooms')) {
+      if (localStorage.getItem('tutorToken')) {
+        // const tutorToken = localStorage.getItem('tutorToken');
+        // if (tutorToken) {
+        //   request = request.clone({
+        //     setHeaders: {
+        //       Authorization: `Bearer ${tutorToken}`
+        //     }
+        //   });
+        // }
+
         request = request.clone({
           setHeaders:{
             Authorization : `Bearer ${JSON.parse(localStorage.getItem('tutorToken')??'')}`
           }
         })
       }
-    }else{
-      if(localStorage.getItem('studentToken')){
+    } else {
+      if (localStorage.getItem('studentToken')) {
         request = request.clone({
-          setHeaders:{
-            Authorization : `Bearer ${JSON.parse(localStorage.getItem('studentToken')??'')}`
+          setHeaders: {
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem('studentToken') ?? '')}`
           }
         })
       }
